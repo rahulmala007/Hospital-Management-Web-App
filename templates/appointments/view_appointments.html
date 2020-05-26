@@ -1,0 +1,54 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+{% block title %}<h2 class="list-group-item" style="color:red; position:relative;"><span style="color:black; position:relative;left:550px">Appointments</span></h2>{% endblock %}
+{% block body %}
+<h5 style="color:green; position:relative; left:600px">Upcoming Appointments</h5>
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion">
+  {% for appointment in upappointments %}
+  <li class="list-group-item"> 
+   <div class="collapsible-header blue-grey"> <b>Details:</b>{{appointment.patient.first_name}} with {{appointment.doctor.first_name}} on {{appointment.appointment_time}}</div>
+    <div class="collapsible-body">
+      <b>Patient:</b> <span class="blue-text text-lighten-1">{{appointment.patient.first_name}} {{appointment.patient.last_name}}</span><br>
+      <b>Doctor:</b> <span class="blue-text text-lighten-1">{{appointment.doctor.first_name}} {{appointment.doctor.last_name}}</span><br>
+      <b>Booked By:</b> <span class="blue-text text-lighten-1">{{appointment.receptionist.first_name}} {{appointment.receptionist.last_name}}</span><br>
+      <b>Time:</b> <span class="blue-text text-lighten-1">{{appointment.appointment_time}}</span>
+      {% if isReceptionist %}
+      <span class="right-align"><a href="/appointments/update_appointment/{{appointment.id}}">Update</a></span>
+      <span class="right-align"><a href="/appointments/delete_appointment/{{appointment.id}}" onclick="return confirm('Are you sure?')">Delete</a></span>
+      {% endif %}
+    </div>
+  </li>
+  {% endfor %}  
+</ul>
+</div>
+
+<h5 style="color:red; position:relative; left:600px">Appointments Completed</h5>
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion">
+  {% for appointment in ltappointments %}
+  <li class="list-group-item">
+    <div class="collapsible-header blue-grey"> <b>Details:</b>{{appointment.patient.first_name}} with {{appointment.doctor.first_name}} on {{appointment.appointment_time}}</div>
+    <div class="collapsible-body">
+      <b>Patient: </b> <span class="blue-text text-lighten-1">{{appointment.patient.first_name}} {{appointment.patient.last_name}}</span><br>
+      <b>Doctor:</b> <span class="blue-text text-lighten-1">{{appointment.doctor.first_name}} {{appointment.doctor.last_name}}</span><br>
+      <b>Booked By: </b> <span class="blue-text text-lighten-1">{{appointment.receptionist.first_name}} {{appointment.receptionist.last_name}}</span><br>
+      <b>Time: </b> <span class="blue-text text-lighten-1">{{appointment.appointment_time}}</span>
+
+      {% if isReceptionist %}
+      <span class="right-align"><a href="/appointments/update_appointment/{{appointment.id}}">Update</a></span>
+      <span class="right-align"><a href="/appointments/delete_appointment/{{appointment.id}}"onclick="return confirm('Are you sure?')">Delete</a></span>
+      {% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+</div>
+
+{% endblock %}

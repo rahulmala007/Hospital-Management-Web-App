@@ -1,0 +1,71 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+{% block body %}
+
+{% if isHR %}
+<div>
+<h3 class="list-group-item" style="color:red; position:relative;"><span style="color:black; position:relative;left:550px">All Doctors</span></h3>
+{% for doctor in all_doctors %}
+<b>Name:</b><li class="list-group-item"><span>{{doctor.user.first_name}} {{doctor.user.last_name}}</li>
+<b>Contact:</b> <li class="list-group-item">{{doctor.contact_no}}</li>
+<b>Salary:</b><li class="list-group-item">{{doctor.salary}}</li>
+<span class="right-align"><a href="/profiles/update_doctor/{{doctor.id}}">Update</a></span>
+ <span class="right-align"><a href="/profiles/delete_doctor/{{doctor.id}}" onclick="return confirm('Are you sure?')">Delete</a></span>
+ </li>
+ <br>
+ <br>
+ <br>
+{% endfor %}
+
+</div>
+
+<br>
+
+<div>
+<h3 class="list-group-item" style="color:red; position:relative;"><span style="color:black; position:relative;left:550px">On Duty Doctors</span></h3>
+{% for doctor in on_duty %}
+<b>Name:</b><li class="list-group-item"><span>{{doctor.user.first_name}} {{doctor.user.last_name}}</li>
+<b>Contact:</b> <li class="list-group-item">{{doctor.contact_no}}</li>
+<b>Salary:</b><li class="list-group-item">{{doctor.salary}}</li>
+<span class="right-align"><a href="/profiles/update_doctor/{{doctor.id}}">Update</a></span>
+ <span class="right-align"><a href="/profiles/delete_doctor/{{doctor.id}}" onclick="return confirm('Are you sure?')">Delete</a></span>
+ </li>
+ <br>
+ <br>
+ <br>
+{% endfor %}
+</div>
+
+<br>
+
+<div>
+<h3 class="list-group-item" style="color:red; position:relative;"><span style="color:black; position:relative;left:550px">Off Duty Doctors</span></h3>
+{% for doctor in off_duty %}
+<b>Name:</b><li class="list-group-item"><span>{{doctor.user.first_name}} {{doctor.user.last_name}}</li>
+<b>Contact:</b> <li class="list-group-item">{{doctor.contact_no}}</li>
+<b>Salary:</b><li class="list-group-item">{{doctor.salary}}</li>
+<span class="right-align"><a href="/profiles/update_doctor/{{doctor.id}}">Update</a></span>
+ <span class="right-align"><a href="/profiles/delete_doctor/{{doctor.id}}" onclick="return confirm('Are you sure?')">Delete</a></span>
+ </li>
+ <br>
+ <br>
+ <br>
+{% endfor %}
+</div>
+
+<br>
+
+{% else %}
+<span>Access Denied</span>
+
+
+{% endif %}
+
+{% endblock %}

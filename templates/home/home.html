@@ -1,0 +1,62 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<title style="font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;">Welcome!</title>
+<h4 style="font-family: Arial, Geneva, Arial, Helvetica,  sans-serif;position:absolute; left:500px;">Welcome to Hosptial Portal</h4>
+<br>
+</html> 
+
+{% if ispatient %}
+<div style="position:absolute;top:50px">
+<button type="button" class="logout/"  onclick="window.location.href='/profiles'">Profile</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/bills'">Bills</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/appointments'">Appointments</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/cases'">Cases</button><br><br>
+</div>
+<br>
+{% endif %}
+
+{% if isdoctor %}
+<div style="position:absolute;top:50px">
+<button type="button" class="logout/"  onclick="window.location.href='/profiles'">Profile</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/appointments'">Appointments</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/cases'">Cases</button><br><br>
+</div>
+<br>
+{% endif %}
+
+{% if isreceptionist %}
+<div style="position:absolute;top:50px">
+<button type="button" class="logout/"  onclick="window.location.href='/profiles'">Profile</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/bills'">Bills</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/appointments'">Appointments</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/cases'">Cases</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/profiles/register'">Add Patient</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/cases/new_case'">Add Appointment</button><br><br>
+</div>
+<br>
+{% endif %}
+
+{% if ishr %}
+<div style="position:absolute;top:50px">
+<button type="button" class="logout/"  onclick="window.location.href='/profiles'">Profile</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/profiles/hr_view'">Doctor INFO</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/profiles/hrpatient_view'">Patient INFO</button><br><br>
+<button type="button" class="logout/"  onclick="window.location.href='/profiles/hraccounting_view'">Accounting</button><br><br>
+</div>
+<br>
+{% endif %}
+
+
+<div style="position:absolute;right:100px">
+<button type="button" class="logout/"  onclick="window.location.href='/logout'">Logout</button>
+</div>
+
+
+
+

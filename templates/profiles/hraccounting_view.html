@@ -1,0 +1,52 @@
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+{% block body %}
+
+{% if isHR %}
+<div>
+<h3 class="list-group-item" style="color:red; position:relative;"><span style="color:green; position:relative;left:550px">Paid Bills</span></h3>
+{% for bill in paid_bills %}
+  <li class="list-group-item">
+                  <b>Patient:</b> <span class="blue-text text-lighten-1">{{bill.case.patient.first_name}} {{bill.case.patient.last_name}}</span><br>
+                  <b>Date:</b> <span class="blue-text text-lighten-1">{{bill.bill_date}}</span><br>
+                  <b>Quantity:</b> <span class="blue-text text-lighten-1">{{bill.quantity}}</span><br>
+                  <b>Bill Description:</b> <span class="blue-text text-lighten-1">{{bill.bill_details}}</span><br>
+                  <b>Amount:</b> <span class="blue-text text-lighten-1">{{bill.amount}}</span><br>
+                </div>
+              </li>
+{% endfor %}
+
+</div>
+
+<br>
+
+<div>
+<h3 class="list-group-item" style="color:red; position:relative;"><span style="color:red; position:relative;left:550px">Unpaid Bills</span></h3>
+{% for bill in unpaid_bills %}
+ <li class="list-group-item">
+                  <b>Patient:</b> <span class="blue-text text-lighten-1">{{bill.case.patient.first_name}} {{bill.case.patient.last_name}}</span><br>
+                  <b>Date:</b> <span class="blue-text text-lighten-1">{{bill.bill_date}}</span><br>
+                  <b>Quantity:</b> <span class="blue-text text-lighten-1">{{bill.quantity}}</span><br>
+                  <b>Bill Description:</b> <span class="blue-text text-lighten-1">{{bill.bill_details}}</span><br>
+                  <b>Amount:</b> <span class="blue-text text-lighten-1">{{bill.amount}}</span><br>
+                  <b>Remaining Amount:</b> <span class="blue-text text-lighten-1">{{bill.remaining_amount}}</span><br>
+                </div>
+              </li>
+{% endfor %}
+</div>
+
+
+{% else %}
+<span>Access Denied</span>
+
+
+{% endif %}
+
+{% endblock %}

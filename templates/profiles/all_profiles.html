@@ -1,0 +1,26 @@
+<title>Profile</title>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+{% block title %}<h3 style="position:relative;left:40%">Profile</h3>{% endblock %}
+{% block body %}
+<div class="container">
+  <ul class="list-group">
+    <h4 style="color: red;">Name</h4><li class="list-group-item"><h4>{{request.user.first_name}} {{request.user.last_name}}</h4></li>
+    <h4 style="color: red;">Username</h4><li class="list-group-item"> <span class="secondary-content black-text">{{request.user.username}}</span></li>
+    <h4 style="color: red;">Email</h4><li class="list-group-item"> <span class="secondary-content black-text">{{request.user.email}}</span></li>
+    <h4 style="color: red;">Contact</h4><li class="list-group-item"> <span class="secondary-content black-text">{{request.user.patient.contact_no}}{{request.user.doctor.contact_no}}{{request.user.hr.contact_no}}{{request.user.receptionist.contact_no}}</span></li>
+    <h4 style="color: red;">Address</h4> <li class="list-group-item"><span class="secondary-content black-text">{{request.user.patient.address}}{{request.user.doctor.address}}{{request.user.hr.address}}{{request.user.receptionist.address}}</span></li>
+    {% if isPatient %}
+     <h4>Blood Group</h4> <li class="collection-item">Bloood Group <span class="secondary-content black-text">{{request.user.patient.blood_group}}</span></li>
+     <h4>Date Of Birth</h4> <li class="collection-item">Date of Birth <span class="secondary-content black-text">{{request.user.patient.dob}}</span></li>
+    {% endif %}
+  </ul>
+</div>
+
+
+{% endblock %}
